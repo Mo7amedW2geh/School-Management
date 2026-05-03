@@ -1,0 +1,13 @@
+﻿@model Trainee
+@{
+    ViewData["Title"] = "Trainee Details";
+}
+
+<h1>@Model.Name</h1>
+<img src="~/images/@Model.Imag" class="img-fluid mb-3" alt="@Model.Name" />
+
+<p><strong>Address:</strong> @Model.Address</p>
+<p><strong>Department:</strong> @Model.Department?.Name</p>
+<p><strong>Grade:</strong> @Model.Grade</p>
+
+<a asp-action="Index" class="btn btn-secondary">Back to list</a>

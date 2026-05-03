@@ -1,0 +1,68 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<h2>@Model.Name</h2>
+
+@if (Model.Manger != null) {
+    <p>
+        <strong>Manager:</strong>
+        <a asp-controller="Instructor" asp-action="Details" asp-route-id="@Model.Manger.Id"
+           target="_blank" class="btn btn-outline-primary btn-sm">
+            @Model.Manger.Name
+        </a>
+    </p>
+}
+
+<hr />
+
+<h4>Instructors (@Model.Instructors.Count)</h4>
+@if (Model.Instructors.Any()) {
+    <div class="d-flex flex-wrap gap-2">
+        @foreach (var instructor in Model.Instructors) {
+            <a asp-controller="Instructor" asp-action="Details" asp-route-id="@instructor.Id"
+               target="_blank" class="btn btn-outline-secondary btn-sm">
+                @instructor.Name
+            </a>
+        }
+    </div>
+} else {
+    <p>No instructors assigned.</p>
+}
+
+<hr />
+
+<h4>Trainees (@Model.Trainees.Count)</h4>
+@if (Model.Trainees.Any()) {
+    <div class="d-flex flex-wrap gap-2">
+        @foreach (var trainee in Model.Trainees) {
+            <a asp-controller="Trainee" asp-action="Details" asp-route-id="@trainee.Id"
+               target="_blank" class="btn btn-outline-success btn-sm">
+                @trainee.Name
+            </a>
+        }
+    </div>
+} else {
+    <p>No trainees enrolled.</p>
+}
+
+<hr />
+
+<h4>Courses (@Model.Courses.Count)</h4>
+@if (Model.Courses.Any()) {
+    <div class="d-flex flex-wrap gap-2">
+        @foreach (var course in Model.Courses) {
+            <a asp-controller="Course" asp-action="ShowCourseResult" asp-route-id="@course.Id"
+               target="_blank" class="btn btn-outline-info btn-sm">
+                @course.Name
+            </a>
+        }
+    </div>
+} else {
+    <p>No courses in this department.</p>
+}
+
+<div class="form-group mt-3">
+<a asp-action="Index" class="btn btn-secondary">Back to list</a>
+</div>

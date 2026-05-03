@@ -1,0 +1,14 @@
+﻿@model Instructor
+@{
+    ViewData["Title"] = "Instructor Details";
+}
+
+<h1>@Model.Name</h1>
+<img src="~/images/@Model.Imag" class="img-fluid mb-3" alt="@Model.Name" />
+
+<p><strong>Salary:</strong> @Model.Salary</p>
+<p><strong>Address:</strong> @Model.Address</p>
+<p><strong>Department:</strong> @Model.Department?.Name</p>
+<p><strong>Course:</strong> @Model.Course?.Name</p>
+
+<a asp-action="Index" class="btn btn-secondary">Back to list</a>

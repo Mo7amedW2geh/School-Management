@@ -1,0 +1,33 @@
+﻿@model List<Trainee>
+@{
+    ViewData["Title"] = "Traines";
+}
+
+<h2>Traines</h2>
+<table id="datatablesSimple" class="table">
+    <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Grade</th>
+        <th></th>
+    </tr>
+    @foreach (var i in Model) {
+        <tr>
+            <td>@i.Name</td>
+            <td>@i.Department?.Name</td>
+            <td>@i.Grade</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@i.Id" class="btn btn-info">Details</a>
+                <a asp-action="Edit" asp-route-id="@i.Id" class="btn btn-info">Edit</a>
+                <a asp-action="ShowTraineeResult" asp-route-id="@i.Id" class="btn btn-info">Show Results</a>
+                <form asp-action="Delete" asp-route-id="@i.Id" method="post" style="display:inline;"
+                      onsubmit="return confirm('Are you sure you want to delete this trainee?');">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-action="Create" class="btn btn-primary">Add New Trainee</a>
+
+

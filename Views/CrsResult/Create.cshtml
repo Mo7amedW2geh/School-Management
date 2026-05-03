@@ -1,0 +1,27 @@
+﻿@model CrsResult
+
+<h2>Add Result</h2>
+
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="TraineeId" />
+
+    <div class="mb-3">
+        <label asp-for="CrsId" class="form-label">Course</label>
+        <select asp-for="CrsId" asp-items="ViewBag.Courses" class="form-select"></select>
+        <span asp-validation-for="CrsId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Degree" class="form-label"></label>
+        <input asp-for="Degree" class="form-control" />
+        <span asp-validation-for="Degree" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="ShowTraineeResult" asp-controller="Trainee" asp-route-id="@Model.TraineeId"
+       class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

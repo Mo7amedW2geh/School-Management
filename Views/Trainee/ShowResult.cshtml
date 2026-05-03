@@ -1,0 +1,11 @@
+﻿@model CrsResult
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h2>Trainee Result</h2>
+<p><strong>Trainee:</strong> @Model.Trainee.Name</p>
+<p><strong>Course:</strong> @Model.Course.Name</p>
+<p><strong>Degree:</strong> @Model.Degree</p>
+
+<a asp-action="Index" class="btn btn-secondary">Back to list</a>
